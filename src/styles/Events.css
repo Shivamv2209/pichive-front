@@ -1,0 +1,44 @@
+.photo{
+    position:absolute;
+    width:240px;
+    border-radius:24px;
+    opacity:0.4;
+    /* filter:blur(4px); */
+    object-fit:cover;
+}
+
+.top-left{
+    top:80px;
+    left:-10px;
+    transform:rotate(-12deg);
+}
+
+.middle-left{
+    top:380px;
+    left:-30px;
+    transform:rotate(10deg);
+}
+
+.bottom-left{
+    bottom:80px;
+    left:20px;
+    transform:rotate(-8deg);
+}
+
+.top-right{
+    top:100px;
+    right:-10px;
+    transform:rotate(12deg);
+}
+
+.middle-right{
+    top:350px;
+    right:-20px;
+    transform:rotate(-10deg);
+}
+
+.bottom-right{
+    bottom:100px;
+    right:10px;
+    transform:rotate(8deg);
+}

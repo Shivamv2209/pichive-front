@@ -10,7 +10,7 @@ function CreateEventPage() {
           <h1 className="text-4xl font-bold text-white mb-5">
             Create an Event
           </h1>
-          <div className="max-w-2xl mx-auto mb-15">
+          <div className="max-w-2xl mx-auto mb-10">
             <p className="text-xl font-medium text-[#868686]">
             Set up your event and get a unique code to share with your guests.
           </p>
