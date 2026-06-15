@@ -19,6 +19,10 @@ function EventPage() {
     navigate(`/upload/photos/${event_code}`)
   }
 
+  const handleFind = ()=>{
+    navigate(`/search/${event_code}`)
+  }
+
 
   useEffect(() => {
     async function fetchEvent() {
@@ -65,7 +69,7 @@ function EventPage() {
                 <p className="text-[#868686] text-center mt-5 leading-8">
                   Upload a selfie and let AI find every photo you're in.
                 </p>
-                <button
+                <button onClick={handleFind}
                   className="w-full hover:bg-[#868686] bg-white text-black font-semibold rounded-2xl py-4 mt-6">
                   Find Photos →
                 </button>
