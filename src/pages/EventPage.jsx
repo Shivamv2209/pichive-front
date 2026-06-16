@@ -40,7 +40,7 @@ function EventPage() {
 
         setEvent(formatName);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     }
 

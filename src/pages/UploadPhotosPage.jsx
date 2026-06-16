@@ -111,7 +111,7 @@ function UploadPhotosPage() {
         });
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     } finally {
       setUploading(false);
     }
@@ -128,7 +128,7 @@ function UploadPhotosPage() {
           event.name.charAt(0).toUpperCase() + event.name.slice(1);
         setEvent(formatName);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     }
     fetch();

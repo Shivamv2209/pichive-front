@@ -20,8 +20,8 @@ function CreateEventBox() {
       );
       navigate(`/${event_code}`);
     } catch (err) {
-      console.log(err.response?.data);
-      console.log(err.message);
+      console.error(err.response?.data);
+      console.error(err.message);
     } finally {
       setLoading(false);
     }

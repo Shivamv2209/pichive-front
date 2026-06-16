@@ -27,7 +27,7 @@ function ResultsPage() {
 
         setEvent(formatName);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     }
 
@@ -45,7 +45,7 @@ function ResultsPage() {
       a.click();
       document.body.removeChild(a);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 

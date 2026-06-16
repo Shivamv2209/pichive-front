@@ -49,7 +49,7 @@ function SearchPage() {
           event.name.charAt(0).toUpperCase() + event.name.slice(1);
         setEvent(formatName);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     }
 
@@ -70,7 +70,7 @@ function SearchPage() {
         videoRef.current.srcObject = stream;
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -112,7 +112,7 @@ function SearchPage() {
             }
         )
     }catch(err){
-        console.log(err)
+        console.error(err)
     }
   }
 
