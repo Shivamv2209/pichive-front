@@ -25,31 +25,32 @@ import {useMediaQuery} from "react-responsive"
 
 
 const grid1Images1 = [
-    {url:img1,alt:"holi people",h:"h-70" ,w:"w-60"},
-    {url:img2,alt:"nice people",h:"h-64" ,w:"w-60"},
-    {url:img3,alt:"nice people",h:"h-75" ,w:"w-60"},
-    {url:img4,alt:"holi people",h:"h-48",w:"w-70"},
-    {url:img5,alt:"nice people",h:"h-75",w:"w-70"},
-    {url:img6,alt:"nice people",h:"h-72",w:"w-70"},
-    {url:img7,alt:"nice people",h:"h-60",w:"w-70"},
-    {url:img8,alt:"nice people",h:"h-62",w:"w-70"},
-    {url:img9,alt:"nice people",h:"h-50",w:"w-70"},
-    {url:img10,alt:"nice people",h:"h-48",w:"w-70"},
-    {url:img11,alt:"nice people",h:"h-52",w:"w-70"},
-    {url:img12,alt:"nice people",h:"h-50",w:"w-70"},
-    {url:img13,alt:"nice people",h:"h-64",w:"w-70"},
-    {url:img14,alt:"nice people",h:"h-48",w:"w-70"},
-    {url:img15,alt:"nice people",h:"h-66",w:"w-70"},
-    {url:img16,alt:"nice people",h:"h-84",w:"w-70"},
-    {url:img17,alt:"nice people",h:"h-75",w:"w-70"},
-    {url:img20,alt:"nice people",h:"h-98",w:"w-70"},
-    {url:img19,alt:"nice people",h:"h-74",w:"w-70"},
-    {url:img18,alt:"nice people",h:"h-63",w:"w-70"},
-    {url:img21,alt:"nice people",h:"h-90",w:"w-70"},
+    {url:img1,alt:"holi people",h:"h-70" ,},
+    {url:img2,alt:"nice people",h:"h-64" ,},
+    {url:img3,alt:"nice people",h:"h-75" ,},
+    {url:img4,alt:"holi people",h:"h-48",},
+    {url:img5,alt:"nice people",h:"h-75",},
+    {url:img6,alt:"nice people",h:"h-72",},
+    {url:img7,alt:"nice people",h:"h-60",},
+    {url:img8,alt:"nice people",h:"h-62",},
+    {url:img9,alt:"nice people",h:"h-50",},
+    {url:img10,alt:"nice people",h:"h-48",},
+    {url:img11,alt:"nice people",h:"h-52",},
+    {url:img12,alt:"nice people",h:"h-50",},
+    {url:img13,alt:"nice people",h:"h-64",},
+    {url:img14,alt:"nice people",h:"h-48",},
+    {url:img15,alt:"nice people",h:"h-66",},
+    {url:img16,alt:"nice people",h:"h-84",},
+    {url:img17,alt:"nice people",h:"h-75",},
+    {url:img20,alt:"nice people",h:"h-98",},
+    {url:img19,alt:"nice people",h:"h-74",},
+    {url:img18,alt:"nice people",h:"h-63",},
+    {url:img21,alt:"nice people",h:"h-90",},
 ]
 
 const breakpointColumnsObj = {
   default: 7,
+  1536:6,
   1280: 5,
   1024: 4,
   768: 3,
@@ -58,8 +59,12 @@ const breakpointColumnsObj = {
 
 function HeroPhotos(){
 
-  const isMobile = useMediaQuery({maxWidth : 767})
-  const imagesToShow = isMobile ? grid1Images1.slice(0,10):grid1Images1
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ maxWidth: 1023 });
+  const mobileCount = 6
+  const tableCount = 10
+
+  const imagesToShow = isMobile ? grid1Images1.slice(0,mobileCount):isTablet ? grid1Images1.slice(0,tableCount) : grid1Images1;
 return(
   <motion.div 
   initial={{ opacity: 0, scale: 0.95 }}
@@ -72,14 +77,14 @@ return(
   >
      <Masonry
   breakpointCols={breakpointColumnsObj}
-  className="flex gap-4"
+  className="flex gap-2 md:gap-4 px-4 md:px-0"
   columnClassName="space-y-4"
 >
   {imagesToShow.map((img, i) => (
     <img
       key={i}
       src={img.url}
-      className={`rounded-2xl ${img.h} ${img.w} w-full object-cover`}
+      className={`rounded-2xl ${isMobile ? "h-40" : img.h} w-full object-cover`}
     />
   ))}
 </Masonry>

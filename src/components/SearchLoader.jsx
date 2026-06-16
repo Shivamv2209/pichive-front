@@ -1,24 +1,29 @@
 function SearchLoading({ eventName }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-white">
+    <div className="min-h-screen flex flex-col items-center justify-center px-5 text-white">
 
-      {/* Animated circle */}
+      {/* Spinner */}
       <div className="w-20 h-20 border-4 border-[#2a2a2a] border-t-white rounded-full animate-spin mb-8" />
 
-      <h1 className="text-4xl font-bold">
+      {/* Heading */}
+      <h1 className="text-3xl md:text-5xl font-bold text-center leading-tight">
         AI is finding your photos...
       </h1>
 
-      <p className="text-[#868686] mt-4">
-        Scanning event <span className="text-white">{eventName}</span>
+      {/* Event */}
+      <p className="text-[#868686] mt-4 text-center">
+        Scanning event{" "}
+        <span className="text-white">{eventName}</span>
       </p>
 
-      <p className="text-[#868686] mt-8 text-center max-w-md">
-        Our AI is analyzing thousands of photos to find the ones featuring you.
-        This usually takes just a few seconds.
+      {/* Description */}
+      <p className="text-[#868686] mt-8 text-center max-w-md leading-relaxed text-sm md:text-base">
+        Our AI is analyzing thousands of photos to find the ones featuring
+        you. This usually takes just a few seconds.
       </p>
 
-      <div className="bg-[#1e1e1e] rounded-3xl p-6 mt-10 w-[450px]">
+      {/* Status card */}
+      <div className="bg-[#1e1e1e] rounded-3xl p-6 mt-10 w-full max-w-[450px]">
 
         <div className="flex items-center gap-3 mb-4">
           <div className="w-3 h-3 rounded-full bg-green-500"></div>
@@ -37,6 +42,7 @@ function SearchLoading({ eventName }) {
 
         <div className="flex items-center gap-3">
           <div className="w-3 h-3 rounded-full bg-[#444]"></div>
+
           <p className="text-[#868686]">
             Preparing your gallery
           </p>

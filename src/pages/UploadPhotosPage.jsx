@@ -49,11 +49,19 @@ function UploadPhotosPage() {
 
   //remove photo
   const removePhoto = (index) => {
-    setPhotos((prev) => prev.filter((_, i) => i !== index));
-  };
+  const updated = photos.filter((_, i) => i !== index);
+  setPhotos(updated);
+
+  if (updated.length === 0 && fileInputRef.current) {
+    fileInputRef.current.value = "";
+  }
+};
   //clear all
   const clearAll = () => {
     setPhotos([]);
+    if (fileInputRef.current) {
+    fileInputRef.current.value = "";
+  }
   };
 
   //handleUpload
@@ -128,17 +136,17 @@ function UploadPhotosPage() {
   return (
     <>
       <NavbarPages />
-      <div className="max-w-3xl flex flex-col items-center mx-auto mt-20 p-15">
+      <div className="max-w-4xl flex flex-col items-center mx-auto mt-24 md:mt-32 px-5">
         {event ? (
           <>
-            <h1 className="text-white font-bold text-3xl">
+            <h1 className="text-white font-bold text-3xl md:text-5xl text-center">
               Upload Your Photos
             </h1>
-            <p className="text-[#868686] mt-3 mb-5">
+            <p className="text-[#868686] mt-3 mb-5 md:mb-15">
               Securely upload event memories...
             </p>
-            <div className="bg-[#1e1e1e] text-center h-[430px] w-[520px] rounded-[32px] pt-6 px-10">
-              <div className="flex gap-8 items-center justify-center mt-5">
+            <div className="bg-[#1e1e1e] text-center w-full max-w-[520px] rounded-[32px] p-6 md:px-10">
+              <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center mt-5">
                 <p className="text-white font-medium text-lg">
                   Event Name: {event}
                 </p>
@@ -196,7 +204,7 @@ function UploadPhotosPage() {
             )}
             {photos.length > 0 && !uploading && (
               <>
-                <div className="flex items-center gap-10 mt-10">
+                <div className="flex flex-col sm:flex-row items-center gap-4 mt-10">
                   {photos.length < 20 && (
                     <button
                       className="bg-white text-black px-5 py-2 rounded-xl"
@@ -216,13 +224,13 @@ function UploadPhotosPage() {
             )}
             {photos.length > 0 && !uploading && (
               <>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-10 w-full">
                   {photos.map((p, i) => (
                     <div key={i} className="relative">
                       <img
                         src={URL.createObjectURL(p)}
                         alt=""
-                        className="w-[180px] h-[180px] object-cover rounded-2xl"
+                        className="w-full aspect-square object-cover rounded-2xl"
                       />
                       <button
                         className="absolute top-2 right-2 bg-black/70 rounded-full p-1"
@@ -253,7 +261,7 @@ function UploadPhotosPage() {
                     }}
                   />
                 </div>
-                <h3 className="text-white font-bold text-lg">{stage}</h3>
+                <h3 className="text-white font-bold text-lg md:text-xl text-center mt-4">{stage}</h3>
                 <p className="text-[#868686] mt-2 text-center">{progress}%</p>
               </>
             )}

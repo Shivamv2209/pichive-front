@@ -8,17 +8,18 @@ import img from "../assets/images/img1.jpg"
 import HowItWorks from "../components/HowItWorks";
 import Footer from "../components/Footer";
 import Badge from "../components/Badge";
+import {useMediaQuery} from "react-responsive"
 
 function LandingPage(){
     const {scrollY} = useScroll();
     const scale = useTransform(scrollY,[0,1000],[1,1.15])
-
+    const isMobile = useMediaQuery({maxWidth : 767})
     return(
         <>
         <Navbar />
-        <main className="pt-20">
+        <main className="pt-16 md:pt-20">
             <HeroText />
-            <motion.div style={{scale}} className="pb-16">
+            <motion.div style={{scale : isMobile ? 1:scale}} className="pb-16">
                 <HeroPhotos />
             </motion.div>
             <Features />

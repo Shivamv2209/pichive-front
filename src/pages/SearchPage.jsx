@@ -59,7 +59,9 @@ function SearchPage() {
   const startCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
+        video:{
+          facingMode:"user",
+        }
       });
 
       streamRef.current = stream;
@@ -120,18 +122,18 @@ function SearchPage() {
       {loading ? (
         <SearchLoading eventName={event} />
       ):(
-        <div className="max-w-5xl mx-auto mt-40">
+        <div className="max-w-5xl mx-auto px-5 mt-24 md:mt-40">
         <div className="flex flex-col items-center">
           <div className="w-20 rounded-xl bg-[#868686] p-2 border border-white flex items-center justify-center">
             <Search size={40} className="text-white" />
           </div>
-          <h2 className="text-white font-bold text-3xl mt-4">
+          <h2 className="text-white font-bold text-3xl md:text-5xl mt-4 text-center">
             Find Your Photos
           </h2>
-          <p className="mt-5 text-[#868686] text-md">
+          <p className="mt-5 text-[#868686] text-sm md:text-base text-center">
             Upload a selfie to find all your photos from {event}.
           </p>
-          <div className="h-[500px] w-[450px] bg-[#1e1e1e] p-4 mt-6 rounded-[32px]">
+          <div className="w-full max-w-[450px] bg-[#1e1e1e] p-5 md:p-6 mt-6 rounded-[32px]">
             <div className="text-center text-[#868686] text-sm font-medium mt-4">
               <p>Position your face and capture a selfie.</p>
             </div>
@@ -139,24 +141,24 @@ function SearchPage() {
               <img
                 src={URL.createObjectURL(capturedImage)}
                 alt="captured selfie"
-                className="w-[350px] mx-auto rounded-[32px] mt-5"
+                className="w-full max-w-[350px] aspect-[3/4] object-cover mx-auto rounded-[32px] mt-5"
               />
             ) : (
               <video
                 ref={videoRef}
                 autoPlay
                 playsInline
-                className="w-[350px] mx-auto rounded-[32px] mt-5"
+                className="w-full max-w-[350px] aspect-[3/4] object-cover mx-auto rounded-[32px] mt-5"
               />
             )}
             <canvas ref={canvasRef} hidden />
-            <div className="flex items-center justify-center">
+            <div className="flex justify-center mt-6">
               {capturedImage ? (
-                <div className="flex items-center gap-5">
-                  <button onClick={handleFindPhotos} className="bg-white text-black px-6 py-3 rounded-2xl mt-8">
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <button onClick={handleFindPhotos} className="w-full sm:w-auto bg-white text-black px-6 py-3 rounded-2xl">
                     Find My Photos
                   </button>
-                  <button onClick={handleRetake} className="bg-white text-black px-6 py-3 rounded-2xl mt-8">
+                  <button onClick={handleRetake} className="w-full sm:w-auto bg-white text-black px-6 py-3 rounded-2xl">
                     Retake Selfie
                   </button>
                 </div>

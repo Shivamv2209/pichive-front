@@ -1,27 +1,71 @@
-import "../styles/Footer.css";
-
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-top">
-        <div className="footer-brand">
-          <h2>PICHIVE</h2>
-          <p>
-            AI-powered event photo retrieval. Find your memories instantly.
+    <footer className="border-t border-[#1f1f1f] mt-20">
+
+      <div className="max-w-6xl mx-auto px-5 py-12">
+
+        {/* Top */}
+        <div className="flex flex-col md:flex-row md:justify-between gap-10">
+
+          {/* Brand */}
+          <div className="max-w-sm">
+            <h2 className="text-white text-2xl font-bold mb-4">
+              PICHIVE
+            </h2>
+
+            <p className="text-[#868686] leading-relaxed">
+              AI-powered event photo retrieval.
+              Find your memories instantly.
+            </p>
+          </div>
+
+          {/* Links */}
+          <div className="flex flex-col sm:flex-row gap-8 sm:gap-12">
+
+            <div className="flex flex-col gap-3">
+              <a
+                href="#features"
+                className="text-[#868686] hover:text-white transition"
+              >
+                Features
+              </a>
+
+              <a
+                href="#working"
+                className="text-[#868686] hover:text-white transition"
+              >
+                How It Works
+              </a>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <a
+                href="/search"
+                className="text-[#868686] hover:text-white transition"
+              >
+                Find Photos
+              </a>
+
+              <a
+                href="/create-event"
+                className="text-[#868686] hover:text-white transition"
+              >
+                Create Event
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="border-t border-[#1f1f1f] mt-10 pt-6 text-center">
+          <p className="text-sm text-[#868686]">
+            © 2026 PICHIVE. All rights reserved.
           </p>
         </div>
 
-        <div className="footer-links">
-          <a href="#features">Features</a>
-          <a href="#working">How It Works</a>
-          <a href="/search">Find Photos</a>
-          <a href="/create-event">Create Event</a>
-        </div>
       </div>
 
-      <div className="footer-bottom">
-        <p>© 2026 PICHIVE. All rights reserved.</p>
-      </div>
     </footer>
   );
 }
