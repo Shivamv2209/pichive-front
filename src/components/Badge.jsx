@@ -1,4 +1,14 @@
+import {useNavigate} from "react-router-dom"
+
 export default function Badge() {
+  const navigate = useNavigate();
+  const handleCreate = ()=>{
+    navigate("/create-event")
+  }
+  const handleSend = ()=>{
+    navigate("/findPhotos")
+  }
+
   return (
     <section className="max-w-5xl mx-auto px-5 py-20">
       <div className="bg-[#121111] rounded-[32px] px-6 py-12 md:px-10 md:py-16 text-center">
@@ -16,11 +26,11 @@ export default function Badge() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="w-full sm:w-auto bg-white text-black font-medium px-6 py-3 rounded-2xl hover:bg-[#868686] transition">
+          <button onClick={handleCreate} className="w-full sm:w-auto bg-white text-black font-medium px-6 py-3 rounded-2xl hover:bg-[#868686] transition">
             Create Your First Event
           </button>
 
-          <button className="w-full sm:w-auto text-[#868686] hover:text-white transition">
+          <button onClick={handleSend} className="w-full sm:w-auto text-[#868686] hover:text-white transition">
             Find My Photos
           </button>
         </div>

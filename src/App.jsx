@@ -6,6 +6,7 @@ import UploadPhotosPage from "./pages/UploadPhotosPage";
 import ConfirmUploads from "./pages/ConfirmUploads";
 import SearchPage from "./pages/SearchPage";
 import ResultsPage from "./pages/ResultsPage";
+import FindPhotos from "./pages/FindPhotos";
 
 function App(){
   return(
@@ -17,6 +18,7 @@ function App(){
       <Route path="/uploads/:event_code/confirm" element={<ConfirmUploads />} />
       <Route path="/search/:event_code" element={<SearchPage />} />
       <Route path="/photos/:event_code" element={<ResultsPage />} />
+      <Route path="/findPhotos" element={<FindPhotos />} />
     </Routes>
   )
 }

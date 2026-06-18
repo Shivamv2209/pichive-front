@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
+import {useNavigate} from "react-router-dom"
 
 function HeroText() {
+  const navigate = useNavigate();
+  const handleCreateButton = ()=>{
+    navigate(`/create-event`);
+  }
+
+  const handleSend = ()=>{
+    navigate("/findPhotos")
+  }
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 40 }}
@@ -33,11 +43,11 @@ function HeroText() {
 
         <div className="flex flex-col sm:flex-row items-center gap-3 pt-8 w-full sm:w-auto">
 
-          <button className="w-full sm:w-auto text-black text-sm rounded-full bg-white px-6 py-3 hover:bg-[#868686] cursor-pointer font-medium">
+          <button onClick={handleCreateButton} className="w-full sm:w-auto text-black text-sm rounded-full bg-white px-6 py-3 hover:bg-[#868686] cursor-pointer font-medium">
             Create Event
           </button>
 
-          <button className="w-full sm:w-auto text-white text-sm rounded-full px-6 py-3 bg-[#3D3D3D] hover:bg-[#252525] hover:text-[#9E9E9E] cursor-pointer font-medium">
+          <button onClick={handleSend} className="w-full sm:w-auto text-white text-sm rounded-full px-6 py-3 bg-[#3D3D3D] hover:bg-[#252525] hover:text-[#9E9E9E] cursor-pointer font-medium">
             Find Photos
           </button>
 

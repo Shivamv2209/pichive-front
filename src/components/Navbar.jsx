@@ -14,6 +14,7 @@ function Navbar() {
 
         {/* Logo */}
         <div className="flex items-center">
+          <Link to="/">
           <img
             src={logo}
             alt=""
@@ -23,6 +24,7 @@ function Navbar() {
           <span className="font-bold text-white tracking-[0.02rem]">
             PICHIVE
           </span>
+          </Link>
         </div>
 
         {/* Desktop Links */}
@@ -39,7 +41,7 @@ function Navbar() {
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center gap-6 text-[14px]">
 
-          <Link to="/create-event">
+          <Link to="/findPhotos">
             <button className="text-[#B6B6B6] hover:text-white font-medium">
               Find My Photos
             </button>
