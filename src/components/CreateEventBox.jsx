@@ -14,8 +14,9 @@ function CreateEventBox() {
   const handleEvent = async () => {
     try {
       setLoading(true);
+      console.log(import.meta.env.VITE_API_URL)
       const result = await axios.post(
-        "http://localhost:3000/api/events/create-event",
+        `${import.meta.env.VITE_API_URL}/api/events/create-event`,
         { name, event_code, email },
       );
       navigate(`/${event_code}`);

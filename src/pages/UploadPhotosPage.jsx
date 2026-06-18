@@ -70,7 +70,7 @@ function UploadPhotosPage() {
       setUploading(true);
       setStage("Upload Starts");
       const result = await axios.post(
-        `http://localhost:3000/api/photos/${event_code}`,
+        `${import.meta.env.VITE_API_URL}/api/photos/${event_code}`,
         {
           upload_key,
           files: photos.map((photo) => ({
@@ -93,7 +93,7 @@ function UploadPhotosPage() {
 
       setStage("Processing Faces");
       const res = await axios.post(
-        `http://localhost:3000/api/photos/${event_code}/confirm`,
+        `${import.meta.env.VITE_API_URL}/api/photos/${event_code}/confirm`,
         {
           upload_key,
           photos: uploads.map((upload) => ({
@@ -121,7 +121,7 @@ function UploadPhotosPage() {
     async function fetch() {
       try {
         const result = await axios.get(
-          `http://localhost:3000/api/events/${event_code}`,
+          `${import.meta.env.VITE_API_URL}/api/events/${event_code}`,
         );
         const event = result.data.event;
         const formatName =

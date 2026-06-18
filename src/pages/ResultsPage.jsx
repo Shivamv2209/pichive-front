@@ -17,7 +17,7 @@ function ResultsPage() {
     async function fetchEvent() {
       try {
         const result = await axios.get(
-          `http://localhost:3000/api/events/${event_code}`
+          `${import.meta.env.VITE_API_URL}/api/events/${event_code}`
         );
 
         const event = result.data.event;

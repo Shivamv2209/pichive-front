@@ -42,7 +42,7 @@ function SearchPage() {
     async function fetchEvent() {
       try {
         const result = await axios.get(
-          `http://localhost:3000/api/events/${event_code}`,
+          `${import.meta.env.VITE_API_URL}/api/events/${event_code}`,
         );
         const event = result.data.event;
         const formatName =
@@ -99,7 +99,7 @@ function SearchPage() {
             capturedImage,
             "selfie.jpg"
         );
-        const result = await axios.post(`http://localhost:3000/api/search/${event_code}`,
+        const result = await axios.post(`${import.meta.env.VITE_API_URL}/api/search/${event_code}`,
             formData,
         )
         const urls = result.data.urls
