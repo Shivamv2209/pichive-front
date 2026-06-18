@@ -39,7 +39,7 @@ export default function Features() {
         <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 leading-tight">
           Built for photographers
           <br className="hidden md:block" />
-          and memories.
+          {" "}and memories.
         </h1>
       </div>
 

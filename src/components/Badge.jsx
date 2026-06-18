@@ -6,7 +6,7 @@ export default function Badge() {
         <h1 className="text-white font-bold text-3xl md:text-5xl leading-tight mb-6">
           Ready to transform
           <br className="hidden md:block" />
-          your event experience?
+          {" "}your event experience?
         </h1>
 
         <div className="max-w-2xl mx-auto mb-10">
