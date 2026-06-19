@@ -60,7 +60,7 @@ function ResultsPage() {
         </h1>
 
         <p className="text-[#868686] text-center mt-4 mb-10 text-sm md:text-base">
-          We found {urls.length >1 ? "photos" : "photo"} featuring you.
+          We found {urls.length >1 ? `${urls.length} photos` : `${urls.length} photo`} featuring you.
         </p>
 
         {/* Empty State */}
