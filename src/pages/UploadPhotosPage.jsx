@@ -12,6 +12,7 @@ function UploadPhotosPage() {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [stage, setStage] = useState("");
+  const [error, setError] = useState("");
   const fileInputRef = useRef(null);
   const MAX_FILES = 20;
   const navigate = useNavigate();
@@ -26,9 +27,10 @@ function UploadPhotosPage() {
     );
 
     if (uniqueFiles.length > MAX_FILES) {
-      alert("You can only upload 20 photos at a time");
+      setError("You can upload up to 20 photos at a time.");
       return;
     }
+    setError("");
     setPhotos(uniqueFiles);
   };
 
@@ -55,10 +57,14 @@ function UploadPhotosPage() {
     if (updated.length === 0 && fileInputRef.current) {
       fileInputRef.current.value = "";
     }
+    if (updated.length <= MAX_FILES) {
+  setError("");
+}
   };
   //clear all
   const clearAll = () => {
     setPhotos([]);
+    setError("")
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -145,6 +151,14 @@ function UploadPhotosPage() {
             <p className="text-[#868686] mt-3 mb-5 md:mb-15">
               Securely upload event memories...
             </p>
+            {error && (
+              <div className="mt-4 w-full max-w-[520px] p-4 rounded-xl bg-red-50 border border-red-200">
+                <h3 className="font-semibold text-red-700">
+                  ⚠️ Upload Limit Reached
+                </h3>
+                <p className="text-sm text-gray-600 mt-1">{error} Please remove some photos before adding more.</p>
+              </div>
+            )}
             <div className="bg-[#1e1e1e] text-center w-full max-w-[520px] rounded-[32px] p-6 md:px-10">
               <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-center mt-5">
                 <p className="text-white font-medium text-lg">
@@ -246,7 +260,8 @@ function UploadPhotosPage() {
                     🗑️ Privacy-first storage
                   </h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    Photos are retained for only a short period and are regularly removed for privacy.
+                    Photos are retained for only a short period and are
+                    regularly removed for privacy.
                   </p>
                 </div>
                 <div className="w-full">
