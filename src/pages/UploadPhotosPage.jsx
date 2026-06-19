@@ -49,19 +49,19 @@ function UploadPhotosPage() {
 
   //remove photo
   const removePhoto = (index) => {
-  const updated = photos.filter((_, i) => i !== index);
-  setPhotos(updated);
+    const updated = photos.filter((_, i) => i !== index);
+    setPhotos(updated);
 
-  if (updated.length === 0 && fileInputRef.current) {
-    fileInputRef.current.value = "";
-  }
-};
+    if (updated.length === 0 && fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
   //clear all
   const clearAll = () => {
     setPhotos([]);
     if (fileInputRef.current) {
-    fileInputRef.current.value = "";
-  }
+      fileInputRef.current.value = "";
+    }
   };
 
   //handleUpload
@@ -241,6 +241,14 @@ function UploadPhotosPage() {
                     </div>
                   ))}
                 </div>
+                <div className="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-200">
+                  <h3 className="font-semibold text-blue-700">
+                    🗑️ Privacy-first storage
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Photos are retained for only a short period and are regularly removed for privacy.
+                  </p>
+                </div>
                 <div className="w-full">
                   <button
                     onClick={handleUpload}
@@ -261,7 +269,9 @@ function UploadPhotosPage() {
                     }}
                   />
                 </div>
-                <h3 className="text-white font-bold text-lg md:text-xl text-center mt-4">{stage}</h3>
+                <h3 className="text-white font-bold text-lg md:text-xl text-center mt-4">
+                  {stage}
+                </h3>
                 <p className="text-[#868686] mt-2 text-center">{progress}%</p>
               </>
             )}
