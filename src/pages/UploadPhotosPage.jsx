@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import NavbarPages from "../components/NavbarPages";
 import { UploadIcon, X } from "lucide-react";
 import axios from "axios";
+import heic2any from "heic2any"
 
 function UploadPhotosPage() {
   const { event_code } = useParams();
@@ -35,19 +36,79 @@ function UploadPhotosPage() {
   };
 
   //browse files
-  const handleFileSelect = (e) => {
-    const selectedFiles = Array.from(e.target.files);
-    addFiles(selectedFiles);
-  };
+  const handleFileSelect = async (e) => {
+  const selectedFiles = Array.from(e.target.files);
+
+  const processedFiles = await Promise.all(
+    selectedFiles.map(async (file) => {
+      if (
+        file.type === "image/heic" ||
+        file.type === "image/heif"
+      ) {
+        const convertedBlob = await heic2any({
+          blob: file,
+          toType: "image/jpeg",
+          quality: 0.9,
+        });
+
+        const blob = Array.isArray(convertedBlob)
+          ? convertedBlob[0]
+          : convertedBlob;
+
+        return new File(
+          [blob],
+          file.name.replace(/\.(heic|heif)$/i, ".jpg"),
+          {
+            type: "image/jpeg",
+          }
+        );
+      }
+
+      return file;
+    })
+  );
+
+  addFiles(processedFiles);
+};
 
   //Drag and drop
 
-  const handleDrop = (e) => {
-    e.preventDefault();
+  const handleDrop = async (e) => {
+  e.preventDefault();
 
-    const droppedFiles = Array.from(e.dataTransfer.files);
-    addFiles(droppedFiles);
-  };
+  const droppedFiles = Array.from(e.dataTransfer.files);
+
+  const processedFiles = await Promise.all(
+    droppedFiles.map(async (file) => {
+      if (
+        file.type === "image/heic" ||
+        file.type === "image/heif"
+      ) {
+        const convertedBlob = await heic2any({
+          blob: file,
+          toType: "image/jpeg",
+          quality: 0.9,
+        });
+
+        const blob = Array.isArray(convertedBlob)
+          ? convertedBlob[0]
+          : convertedBlob;
+
+        return new File(
+          [blob],
+          file.name.replace(/\.(heic|heif)$/i, ".jpg"),
+          {
+            type: "image/jpeg",
+          }
+        );
+      }
+
+      return file;
+    })
+  );
+
+  addFiles(processedFiles);
+};
 
   //remove photo
   const removePhoto = (index) => {
@@ -173,7 +234,7 @@ function UploadPhotosPage() {
                 value={upload_key}
                 placeholder="Upload Key"
                 multiple
-                accept=".jpg,.jpeg,.png"
+                accept=".jpg,.jpeg,.png,.heic,.heif"
                 onChange={(e) => setUploadKey(e.target.value)}
                 className="bg-[#808080] border-none w-full rounded-2xl p-2 outline-none mb-4 text-center mt-10"
               />
@@ -192,7 +253,7 @@ function UploadPhotosPage() {
                   ref={fileInputRef}
                   type="file"
                   onChange={handleFileSelect}
-                  accept=".jpg,.jpeg,.png"
+                  accept=".jpg,.jpeg,.png,.heic,.heif"
                   multiple
                   hidden
                   placeholder="Browse Files"
