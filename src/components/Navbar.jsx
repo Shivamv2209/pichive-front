@@ -20,7 +20,8 @@ function Navbar() {
             alt=""
             className="h-14 w-14 md:h-18 md:w-18"
           />
-
+          </Link>
+          <Link to="/">
           <span className="font-bold text-white tracking-[0.02rem]">
             PICHIVE
           </span>
