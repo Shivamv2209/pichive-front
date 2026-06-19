@@ -152,7 +152,7 @@ function UploadPhotosPage() {
               Securely upload event memories...
             </p>
             {error && (
-              <div className="mt-4 w-full max-w-[520px] p-4 rounded-xl bg-red-50 border border-red-200">
+              <div className="mt-4 mb-2 w-full max-w-[520px] p-4 rounded-xl bg-red-50 border border-red-200">
                 <h3 className="font-semibold text-red-700">
                   ⚠️ Upload Limit Reached
                 </h3>
