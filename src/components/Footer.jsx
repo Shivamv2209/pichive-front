@@ -33,7 +33,7 @@ export default function Footer() {
 
             <div className="flex flex-col gap-3">
               <a
-                href="/search"
+                href="/findPhotos"
                 className="text-[#868686] hover:text-white transition"
               >
                 Find Photos
