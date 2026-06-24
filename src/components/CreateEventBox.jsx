@@ -33,7 +33,7 @@ function CreateEventBox() {
       <input
         type="text"
         value={name}
-        placeholder="Event Name"
+        placeholder="TechFest"
         onChange={(e) => setEventName(e.target.value)}
         className="bg-[#868686] w-full rounded-2xl px-4 py-3 outline-none mb-6 text-center"
       />
@@ -41,7 +41,7 @@ function CreateEventBox() {
       <input
         type="text"
         value={event_code}
-        placeholder="Event Code"
+        placeholder="TechFest26"
         onChange={(e) => setEventCode(e.target.value)}
         className="bg-[#868686] w-full rounded-2xl px-4 py-3 outline-none mb-6 text-center"
       />
@@ -49,11 +49,11 @@ function CreateEventBox() {
       <input
         type="email"
         value={email}
-        placeholder="Email"
+        placeholder="you@example.com"
         onChange={(e) => setEmail(e.target.value)}
-        className="bg-[#868686] w-full rounded-2xl px-4 py-3 outline-none mb-6 text-center"
+        className="bg-[#868686] w-full rounded-2xl px-4 py-3 outline-none mb-2 text-center"
       />
-      <div>
+      {/* <div>
         <ul className="mt-4 space-y-2">
           <li className="text-[#868686] text-sm mb-2">Examples:</li>
           <li className="text-[#868686] text-sm mb-2">
@@ -64,10 +64,13 @@ function CreateEventBox() {
             College Farewell Night
           </li>
         </ul>
-      </div>
-      <p className="text-[#868686] mt-8 text-sm md:text-base leading-relaxed">
-        Give your event a memorable name so guests can recognize it.
+      </div> */}
+      <div className="text-center mb-12">
+        <p className="text-[#868686] text-sm md:text-base leading-relaxed">
+        {/* Give your event a memorable name so guests can recognize it. */}
+        We'll send your secure upload key to this email.
       </p>
+      </div>
       <button
         disabled={loading}
         onClick={handleEvent}
@@ -80,7 +83,7 @@ function CreateEventBox() {
         ) : (
           <>
             <Sparkle className="h-4 w-4" />
-            Create Your Event
+            Create Event
           </>
         )}
       </button>

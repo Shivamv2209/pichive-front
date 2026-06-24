@@ -30,7 +30,7 @@ function EventPage() {
     async function fetchEvent() {
       try {
         const result = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/events/${event_code}`
+          `${import.meta.env.VITE_API_URL}/api/events/${event_code}`,
         );
 
         const event = result.data.event;
@@ -52,7 +52,6 @@ function EventPage() {
       <NavbarPages />
 
       <div className="relative min-h-screen overflow-hidden">
-
         {/* Decorative Photos - hidden on mobile */}
         <img src={img1} className="photo top-left hidden lg:block" />
         <img src={img2} className="photo middle-left hidden lg:block" />
@@ -63,7 +62,6 @@ function EventPage() {
 
         {event ? (
           <div className="relative z-10 max-w-5xl mx-auto px-5 mt-28 md:mt-40 flex flex-col items-center text-center">
-
             {/* Heading */}
             <h1 className="text-3xl md:text-5xl text-white font-bold leading-tight">
               Welcome to {event}
@@ -75,10 +73,8 @@ function EventPage() {
 
             {/* Cards */}
             <div className="flex flex-col lg:flex-row gap-8 mt-14 md:mt-20 w-full items-center justify-center">
-
               {/* Find Photos */}
               <div className="w-full max-w-[340px] min-h-[420px] bg-[#1e1e1e] rounded-[32px] border border-[#222] flex flex-col items-center justify-between py-10 px-8 hover:scale-105 transition-all duration-300">
-
                 <Camera className="text-white" size={45} />
 
                 <h2 className="text-2xl md:text-3xl font-bold text-white mt-8">
@@ -99,7 +95,6 @@ function EventPage() {
 
               {/* Upload Photos */}
               <div className="w-full max-w-[340px] min-h-[420px] bg-[#1e1e1e] rounded-[32px] border border-[#222] flex flex-col items-center justify-between py-10 px-8 hover:scale-105 transition-all duration-300">
-
                 <UploadCloud className="text-white" size={45} />
 
                 <h2 className="text-2xl md:text-3xl font-bold text-white mt-8">
@@ -107,7 +102,8 @@ function EventPage() {
                 </h2>
 
                 <p className="text-[#868686] text-center mt-5 leading-8">
-                  Photographers and organizers can securely upload event memories.
+                  Photographers and organizers can securely upload event
+                  memories.
                 </p>
 
                 <button
@@ -117,7 +113,6 @@ function EventPage() {
                   Upload Photos →
                 </button>
               </div>
-
             </div>
 
             {/* Security Note */}
@@ -127,10 +122,19 @@ function EventPage() {
                 Your photos are private and secure.
               </h4>
             </div>
-
           </div>
         ) : (
-          <p className="text-white mt-40 text-center">Loading...</p>
+          <div className="min-h-screen bg-black flex items-center justify-center">
+            <div className="flex flex-col items-center gap-4">
+              <div className="h-10 w-10 rounded-full border-4 border-zinc-700 border-t-white animate-spin"></div>
+
+              <h2 className="text-white text-xl font-semibold">
+                Preparing your event...
+              </h2>
+
+              <p className="text-zinc-400">Loading memories...</p>
+            </div>
+          </div>
         )}
       </div>
     </>

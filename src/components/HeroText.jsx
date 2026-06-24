@@ -24,21 +24,24 @@ function HeroText() {
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
 
         <h5 className="text-xs md:text-sm text-[#868686]">
-          AI-powered event photo retrieval
+          For Weddings • Trips • College Events
         </h5>
 
         <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mt-4">
-          Find your event
+          Never lose your 
+          {/* Find your event */}
           <br />
-          photos instantly
+          {/* photos instantly */}
+          event memories
           <br />
-          with AI
+          {/* with AI */}
+          again.
         </h1>
 
         <p className="mt-6 max-w-2xl text-base md:text-lg text-[#868686] px-2">
-          Upload a single selfie and our AI automatically finds every
-          photo taken of you across the entire event gallery — in seconds.
-          No more searching, no more missing moments.
+          Upload one selfie and instantly find every photo you're in. 
+          <br />
+          No endless scrolling.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 pt-8 w-full sm:w-auto">
